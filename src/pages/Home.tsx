@@ -1,12 +1,19 @@
 import { Reveal, ScrollProgressBar, StaggerGroup, StaggerItem } from '@/components/Reveal';
 import { site } from '@/content/site';
 import { Link } from 'react-router-dom';
-import { useRef } from 'react';
+import { useRef, type MouseEvent } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
+
+function makeSectionScroller(id: string) {
+  return (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+}
 
 function List({ items }: { items: readonly string[] }) {
   return (
@@ -92,10 +99,10 @@ export default function HomePage() {
             <span>{site.person.title}</span>
           </div>
           <nav className="nav" aria-label="Primary">
-            <a href="#direction">Direction</a>
-            <a href="#research">Research</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
+            <a href="#direction" onClick={makeSectionScroller('direction')}>Direction</a>
+            <a href="#research" onClick={makeSectionScroller('research')}>Research</a>
+            <a href="#projects" onClick={makeSectionScroller('projects')}>Projects</a>
+            <a href="#skills" onClick={makeSectionScroller('skills')}>Skills</a>
             <Link to="/focus">Focus pages</Link>
           </nav>
         </header>
@@ -111,7 +118,7 @@ export default function HomePage() {
             <p className="lede">{site.person.headline}</p>
             <p className="small">{site.person.summary}</p>
             <div className="section-actions">
-              <a className="button primary" href="#projects">
+              <a className="button primary" href="#projects" onClick={makeSectionScroller('projects')}>
                 View proof
               </a>
               <Link className="button" to="/focus/research">
