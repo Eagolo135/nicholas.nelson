@@ -11,9 +11,9 @@
 
 - [ ] Replace TODO project fields with real project data (revised midterm project)
 - [ ] Replace TODO project fields with real project data (job technology project)
-- [ ] Add GitHub profile link
+- [x] Add GitHub profile link
 - [ ] Add LinkedIn profile link
-- [ ] Add hosted site link (GitHub Pages URL — available after Sprint-06)
+- [x] Add hosted site link
 - [ ] Review `docs/CONTENT_INVENTORY.md` and mark all items resolved
 
 ---
@@ -26,4 +26,5 @@ No `TODO` markers remain in `src/content/site.ts` or any page component; all Req
 
 ## Notes
 
-Hosted site link can be marked pending until Sprint-06 completes deployment. All other fields should be real before Sprint-06 begins.
+Public site scope was narrowed during this sprint so the portfolio only shows resume-relevant content for the Cloud Security Engineer - AI Trainer target. Workflow/process/meta content was removed from public routes and the homepage.
+Real project details and LinkedIn still need to be supplied before this sprint can close.

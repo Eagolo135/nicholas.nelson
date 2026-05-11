@@ -1,9 +1,9 @@
 # Nicholas Nelson Portfolio
 
-Professional portfolio for Nicholas Nelson, built for GitHub Pages hosting with Next.js static export.
+Professional portfolio for Nicholas Nelson, built with Vite, React, and TypeScript for GitHub Pages hosting.
 
 ## Current status
-- Scrollytelling homepage scaffolded
+- Novu-inspired interactive homepage scaffolded
 - Focus pages scaffolded
 - Single source of truth doc added in docs/PROJECT_SPEC.md
 - Project content still needs the final midterm and job-technology details
@@ -20,9 +20,13 @@ All major scope and content decisions should be checked against docs/PROJECT_SPE
 - `npm run build`
 
 ## GitHub Pages
-The workflow sets the base path automatically from the repository name.
-If you deploy manually, set:
-- `NEXT_PUBLIC_BASE_PATH=/repo-name`
+- Routing uses `HashRouter`, so focus-page URLs work on GitHub Pages without server-side rewrites.
+- Vite is configured with relative asset paths (`base: './'`), so the built files load correctly from the repository subpath.
+- The deploy workflow publishes `dist/` directly with GitHub Pages Actions.
+- Local validation for production output:
+	1. Run `npm run build`
+	2. Run `npm run preview`
+	3. Open the local preview and verify `#/focus`, `#/focus/research`, `#/focus/projects`, and `#/focus/workflow`
 
 ## Live site
 https://eagolo135.github.io/nicholas.nelson/

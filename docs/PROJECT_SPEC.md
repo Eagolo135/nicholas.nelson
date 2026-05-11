@@ -6,7 +6,7 @@ This document is the single source of truth for scope, content, visual direction
 If implementation changes intentionally, update this file and the decision log in the same change.
 
 ## Goal
-Create a professional GitHub Pages portfolio for Nicholas Nelson that presents him as a Cybersecurity & AI Systems Student building toward Security Engineer – AI Trainer roles.
+Create a professional GitHub Pages portfolio for Nicholas Nelson that presents him as a Cybersecurity & AI Systems Student building toward Cloud Security Engineer - AI Trainer roles.
 
 ## Audience
 - Professors reviewing the final project
@@ -15,7 +15,7 @@ Create a professional GitHub Pages portfolio for Nicholas Nelson that presents h
 - Anyone assessing professional direction
 
 ## Product shape
-- Main homepage with scrollytelling sections
+- Main homepage with concise resume-style sections
 - Focus pages for deeper dives
 - Simple, reliable GitHub Pages deployment
 - Accessible, responsive, and easy to scan
@@ -27,17 +27,15 @@ Create a professional GitHub Pages portfolio for Nicholas Nelson that presents h
 3. Career research
 4. Featured projects
 5. Skills and tools
-6. AI workflow
-7. Contact and links
+6. Contact and links
 
 ### Focus pages
 - Research
 - Projects
-- Workflow
 
 ## Required identity
 - Public-facing identity: Cybersecurity & AI Systems Student
-- Career direction: Security Engineer – AI Trainer
+- Career direction: Cloud Security Engineer - AI Trainer
 - Tone: intelligent, calm, credible, structured, future-facing
 
 ## Style rules
@@ -68,6 +66,7 @@ Create a professional GitHub Pages portfolio for Nicholas Nelson that presents h
 - The career direction is obvious within the first screen.
 - The site shows proof, not hype.
 - The two required projects are clearly represented.
+- Public pages contain only resume-relevant content for the target role.
 - The site works as a static export on GitHub Pages.
 - The README contains the live site URL.
 - No unsupported claims or invented experience.
