@@ -14,13 +14,13 @@ AI is used as a planning, research, drafting, and revision tool.
 
 Every implementation session follows this loop in order:
 
-1. **Orient** — Read `PROJECT_SPEC.md` and the Current sprint entry in `SPRINTS.md`.
-2. **Plan** — Confirm the sprint goal and task list are written before touching code. If a task has no sprint entry, add one first (except top-priority — see Sprint Rules).
+1. **Orient** — Read `docs/PROJECT_SPEC.md` and the active file in `docs/sprints/current/`.
+2. **Plan** — Confirm the sprint goal and task list are written before touching code. If a task has no sprint entry, create one in `docs/sprints/next/` and promote it first (except top-priority — see Sprint Rules).
 3. **Implement** — Work through sprint tasks one at a time. Keep changes scoped to the active sprint.
 4. **QA** — Run `npm run typecheck` → `npm run build` → browser smoke test. Fix any failures before proceeding.
-5. **Record** — Check off completed tasks in `SPRINTS.md`. If the implementation changed the spec, update `PROJECT_SPEC.md` and `DECISION_LOG.md` in the same commit.
+5. **Record** — Check off completed tasks in the current sprint file. If the implementation changed the spec, update `PROJECT_SPEC.md` and `DECISION_LOG.md` in the same commit.
 6. **Ship** — `git add` → `git commit` (descriptive message referencing sprint) → `git push`.
-7. **Advance** — If all tasks in the Current sprint are done, move it to Completed and promote the top Next sprint to Current.
+7. **Advance** — If all tasks are done: move the sprint file from `current/` → `completed/`, promote the top `next/` file to `current/`, update the dashboard in `docs/sprints/README.md`.
 
 ---
 

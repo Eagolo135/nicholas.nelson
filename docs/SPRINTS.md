@@ -1,8 +1,13 @@
 # Sprints
 
-All new work must be a sprint entry before implementation begins.
-Exception: if the user marks something **top priority**, execute immediately and backfill the sprint record in the same commit.
-Every sprint follows the [Work Loop Cycle](AI_DEV_FRAMEWORK.md).
+> Sprint tracking has moved to a folder-based system.
+> **Go to [docs/sprints/README.md](sprints/README.md)** for the status dashboard, all sprint files, and the template.
+
+Quick links:
+- [Current sprint](sprints/current/sprint-05-content-finalization.md)
+- [Next sprint](sprints/next/sprint-06-deploy-acceptance.md)
+- [Completed sprints](sprints/completed/)
+- [Sprint template](sprints/_template.md)
 
 ---
 
