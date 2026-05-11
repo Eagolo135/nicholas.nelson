@@ -1,6 +1,12 @@
 import { Reveal, ScrollProgressBar, StaggerGroup, StaggerItem } from '@/components/Reveal';
 import { site } from '@/content/site';
 import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 function List({ items }: { items: readonly string[] }) {
   return (
@@ -37,6 +43,45 @@ function SocialLinks() {
 }
 
 export default function HomePage() {
+  const scrollyRef = useRef<HTMLElement | null>(null);
+
+  useGSAP(
+    () => {
+      const cards = gsap.utils.toArray<HTMLElement>('.scrolly-card');
+      if (!cards.length || !scrollyRef.current) {
+        return;
+      }
+
+      const mm = gsap.matchMedia();
+      mm.add('(min-width: 901px)', () => {
+        gsap.set(cards, { autoAlpha: 0.2, y: 45 });
+        gsap.set(cards[0], { autoAlpha: 1, y: 0 });
+
+        const tl = gsap.timeline({
+          defaults: { ease: 'none' },
+          scrollTrigger: {
+            trigger: scrollyRef.current,
+            start: 'top top+=80',
+            end: '+=1800',
+            scrub: true,
+            pin: '.scrolly-stage',
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        cards.slice(1).forEach((card, index) => {
+          const previous = cards[index];
+          tl.to(previous, { autoAlpha: 0.25, y: -18, duration: 0.7 })
+            .to(card, { autoAlpha: 1, y: 0, duration: 0.7 }, '<');
+        });
+      });
+
+      return () => mm.revert();
+    },
+    { scope: scrollyRef }
+  );
+
   return (
     <>
       <ScrollProgressBar />
@@ -121,6 +166,38 @@ export default function HomePage() {
               </div>
               <List items={['Professional', 'Focused', 'Modern', 'Future-facing', 'Technical', 'Believable']} />
             </Reveal>
+          </div>
+        </section>
+
+        <section className="section scrolly-lab" id="story" ref={scrollyRef}>
+          <div className="section-title">
+            <h2>Scrollytelling: Fit Story</h2>
+            <span className="chip">Pinned sequence</span>
+          </div>
+          <div className="scrolly-shell">
+            <div className="scrolly-stage panel">
+              <article className="scrolly-card">
+                <p className="eyebrow">Signal 01</p>
+                <h3>Direction clarity</h3>
+                <p className="lede">{site.direction.currentFocus}</p>
+                <p className="muted">{site.direction.shortExplanation}</p>
+              </article>
+              <article className="scrolly-card">
+                <p className="eyebrow">Signal 02</p>
+                <h3>Research-informed</h3>
+                <p className="lede">{site.sections.research}</p>
+                <p className="muted">
+                  The goal is to show role-fit with evidence and reasoning, not generic cybersecurity buzzwords.
+                </p>
+              </article>
+              <article className="scrolly-card">
+                <p className="eyebrow">Signal 03</p>
+                <h3>AI workflow discipline</h3>
+                <p className="lede">{site.sections.aiWorkflow}</p>
+                <p className="muted">AI is used as an assistant for structure and iteration, with human review on final decisions.</p>
+              </article>
+            </div>
+            <div className="scrolly-spacer" aria-hidden="true" />
           </div>
         </section>
 
