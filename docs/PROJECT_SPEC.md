@@ -1,0 +1,73 @@
+# Project Spec: Nicholas Nelson Portfolio
+
+## Source of truth
+This document is the single source of truth for scope, content, visual direction, and implementation rules.
+
+If implementation changes intentionally, update this file and the decision log in the same change.
+
+## Goal
+Create a professional GitHub Pages portfolio for Nicholas Nelson that presents him as a Cybersecurity & AI Systems Student building toward Security Engineer – AI Trainer roles.
+
+## Audience
+- Professors reviewing the final project
+- Early-career recruiters
+- Cybersecurity or AI reviewers
+- Anyone assessing professional direction
+
+## Product shape
+- Main homepage with scrollytelling sections
+- Focus pages for deeper dives
+- Simple, reliable GitHub Pages deployment
+- Accessible, responsive, and easy to scan
+
+## Structure
+### Main scroll narrative
+1. Hero
+2. Professional direction
+3. Career research
+4. Featured projects
+5. Skills and tools
+6. AI workflow
+7. Contact and links
+
+### Focus pages
+- Research
+- Projects
+- Workflow
+
+## Required identity
+- Public-facing identity: Cybersecurity & AI Systems Student
+- Career direction: Security Engineer – AI Trainer
+- Tone: intelligent, calm, credible, structured, future-facing
+
+## Style rules
+- Dark navy, charcoal, or neutral background
+- High-contrast typography
+- Cyan, blue, green, or violet accents
+- Subtle technical texture only
+- No fake hacker aesthetic
+- No flashy or distracting motion
+
+## Required proof
+- Revised midterm project
+- Job technology project
+- Skills and tools
+- GitHub link
+- LinkedIn link
+- Hosted site link
+- README with live URL
+
+## Drift control rules
+1. Read this file before making major changes.
+2. Compare implementation against the spec.
+3. If implementation changes on purpose, update this file first or in the same commit.
+4. Record major changes in docs/DECISION_LOG.md.
+5. Keep placeholder project details marked clearly as TODO until verified.
+
+## Acceptance criteria
+- The career direction is obvious within the first screen.
+- The site shows proof, not hype.
+- The two required projects are clearly represented.
+- The site works as a static export on GitHub Pages.
+- The README contains the live site URL.
+- No unsupported claims or invented experience.
