@@ -129,9 +129,6 @@ export default function HomePage() {
                   <div className="relative flex h-64 items-center justify-center overflow-hidden rounded-xl bg-surface-container-lowest md:h-full">
                     <img alt="Portrait of Nicholas Nelson" className="absolute inset-0 h-full w-full object-cover" src={profilePhoto} />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/35 to-transparent" />
-                    <div className="absolute bottom-1 left-1/2 z-10 -translate-x-1/2 rounded-full border border-primary/30 bg-surface-container/70 px-4 py-2 font-code text-code-sm text-primary-fixed backdrop-blur-sm">
-                      EST. 2026 // NJIT
-                    </div>
                   </div>
                 </div>
               </Reveal>
