@@ -10,8 +10,8 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   { to: '/', label: 'Home', end: true },
-  { to: '/focus', label: 'Intel Hub' },
-  { to: '/focus/research', label: 'Research' },
+  { to: '/focus', label: 'Focus Hub' },
+  { to: '/focus/research', label: 'Direction' },
   { to: '/focus/projects', label: 'Projects' },
 ];
 
@@ -92,10 +92,10 @@ export function SiteFrame({ children }: SiteFrameProps) {
         <footer className="mt-14 flex flex-col gap-5 border-t border-outline-variant/30 bg-surface-container-lowest/70 px-1 py-8 sm:px-0 lg:flex-row lg:items-center lg:justify-between">
           <div className="space-y-2">
             <div className="font-code text-[11px] uppercase tracking-[0.22em] text-primary">
-              N. Nelson // Cyber Intel
+              N. Nelson // Applied AI
             </div>
             <p className="max-w-2xl text-sm text-on-surface-variant">
-              Recruiter-facing portfolio focused on cybersecurity review, code-aware analysis, and AI-aware technical judgment.
+              Recruiter-facing portfolio focused on applied AI systems, context engineering, evaluation design, and technical communication.
             </p>
           </div>
 
@@ -125,7 +125,7 @@ export function SiteFrame({ children }: SiteFrameProps) {
                 rel="noreferrer"
                 target="_blank"
               >
-                Deploy
+                Live Site
               </a>
             ) : null}
           </div>

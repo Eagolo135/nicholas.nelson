@@ -40,13 +40,13 @@ export default function Projects() {
               <div className="max-w-3xl">
                 <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 font-code text-code-sm text-primary">
                   <span aria-hidden="true">▣</span>
-                  Strategic Deployments
+                  Featured Projects
                 </div>
                 <h1 className="mt-6 font-display text-[clamp(2.8rem,6vw,5rem)] font-bold leading-[0.95] tracking-[-0.04em] text-on-surface text-glow">
-                  Searchable project evidence with a deeper modal review layer.
+                  Searchable project work with deeper architecture and evaluation detail.
                 </h1>
                 <p className="mt-5 max-w-3xl text-lg text-on-surface-variant">
-                  This page adapts the Stitch search interface into a recruiter-facing project surface. Results stay honest about what is verified and what is still waiting on final assignment detail.
+                  This page turns the portfolio projects into a searchable surface. Each result opens a deeper modal view with summaries, capabilities, architecture, and visible proof.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -66,7 +66,7 @@ export default function Projects() {
                 <input
                   className="w-full border-none bg-transparent text-on-surface outline-none placeholder:text-on-surface-variant"
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Search technical intel..."
+                  placeholder="Search projects, tools, or methods..."
                   type="text"
                   value={query}
                 />
@@ -132,7 +132,7 @@ export default function Projects() {
               description={
                 normalizedQuery
                   ? `Showing results for "${deferredQuery}". The filter runs against project names, categories, tags, summaries, and explicit search terms.`
-                  : 'The right column is the main interaction surface: click a card to open the modal-based project deep dive.'
+                  : 'The right column is the main interaction surface: click a card to open the modal and inspect project summary, capabilities, architecture, and visible proof.'
               }
               eyebrow="Query Results"
               title={`${filteredProjects.length} match${filteredProjects.length === 1 ? '' : 'es'} found`}
@@ -190,7 +190,7 @@ export default function Projects() {
                   No projects matched the current query.
                 </h2>
                 <p className="mx-auto mt-4 max-w-2xl text-on-surface-variant">
-                  Try another keyword or clear the filters. The search is intentionally narrow because the portfolio is still prioritizing only verified, role-relevant project slots.
+                  Try another keyword or clear the filters. Search runs against the current project set, including categories, methods, and tool-specific search terms.
                 </p>
               </Reveal>
             )}

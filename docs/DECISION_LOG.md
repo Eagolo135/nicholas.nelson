@@ -11,3 +11,9 @@
 - Added TailwindCSS as the implementation layer for Stitch tokens and exported layout translation.
 - Kept the current public route count and folded the Stitch search view plus project-detail modal into the existing projects page.
 - Preserved explicit pending states for unverified project facts rather than filling the new modal/search UI with invented details.
+
+## 2026-05-12
+- Repositioned the portfolio from cloud security toward applied AI systems based on the sourced content brief.
+- Lifted homepage copy out of inline constants so public content now flows from src/content/site.ts.
+- Reframed the focus routes around career direction and project detail while keeping the current route structure stable.
+- Replaced the old placeholder project set with StoryLens AI, UNSW-NB15, Taro App, Sakila Movies, and a still-pending revised midterm entry.

@@ -14,7 +14,7 @@ export default function Research() {
             <Reveal>
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 font-code text-code-sm text-primary">
                 <span aria-hidden="true">▣</span>
-                Career Research
+                Career Direction
               </div>
               <h1 className="mt-6 max-w-3xl font-display text-[clamp(2.8rem,6vw,5rem)] font-bold leading-[0.95] tracking-[-0.04em] text-on-surface text-glow">
                 {site.direction.currentFocus}
@@ -29,14 +29,12 @@ export default function Research() {
 
             <Reveal delay={0.08}>
               <article className="liquid-glass rounded-[28px] p-6 inner-glow">
-                <div className="font-code text-label-caps uppercase text-primary">Research Summary</div>
+                <div className="font-code text-label-caps uppercase text-primary">Direction Summary</div>
                 <div className="mt-5 space-y-5 text-on-surface-variant">
-                  <p>
-                    The role works as a target because it depends on technical judgment instead of only tool familiarity. That is where research quality, review habits, and careful explanation start to matter.
-                  </p>
-                  <p>
-                    The public site stays conservative on purpose: it shows the role case clearly, but it does not overstate finished cloud-specific proof where the underlying project detail is still being verified.
-                  </p>
+                  <p>{site.direction.shortExplanation}</p>
+                  {site.direction.details.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
                 </div>
               </article>
             </Reveal>
@@ -45,7 +43,7 @@ export default function Research() {
 
         <section className="mt-12">
           <SectionHeading
-            description="These role details explain why the direction fits this portfolio and what still needs to improve before the case is stronger."
+            description="These details explain why applied AI systems work fits this portfolio and what the direction depends on in practice."
             eyebrow="Role Breakdown"
             title="What this direction depends on."
           />
@@ -61,9 +59,9 @@ export default function Research() {
 
         <section className="mt-12">
           <SectionHeading
-            description="These standards are the basis for judging whether AI-generated security guidance is useful, incomplete, or unsafe."
+            description="These standards are the basis for judging whether an AI system is grounded, useful, and reliable enough to trust."
             eyebrow="Evaluation Standards"
-            title="How technical answers should be judged."
+            title="How AI systems should be judged."
           />
           <div className="grid gap-5 lg:grid-cols-3">
             {site.research.evaluationStandards.map((standard) => (
@@ -80,10 +78,10 @@ export default function Research() {
             <div className="max-w-2xl">
               <div className="font-code text-label-caps uppercase text-primary">Next Surface</div>
               <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.03em] text-on-surface">
-                Move from role research into project evidence.
+                Move from direction into project detail.
               </h2>
               <p className="mt-4 text-on-surface-variant">
-                The projects route uses the search and modal patterns from the Stitch package so the public evidence layer can be reviewed more interactively.
+                The projects route turns the portfolio into a searchable project surface with modal detail for capabilities, architecture, and visible proof.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">

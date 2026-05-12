@@ -9,22 +9,23 @@
 
 ## Tasks
 
-- [ ] Replace TODO project fields with real project data (revised midterm project)
-- [ ] Replace TODO project fields with real project data (job technology project)
+- [ ] Replace TODO project fields with final verified data (revised midterm project)
+- [x] Replace placeholder project set with sourced applied-AI project summaries
 - [x] Add GitHub profile link
-- [ ] Add LinkedIn profile link
+- [x] Add LinkedIn profile link
+- [x] Add email link
 - [x] Add hosted site link
-- [ ] Review `docs/CONTENT_INVENTORY.md` and mark all items resolved
+- [ ] Review `docs/CONTENT_INVENTORY.md` and mark remaining midterm/link TODOs resolved
 
 ---
 
 ## Done When
 
-No `TODO` markers remain in `src/content/site.ts` or any page component; all Required proof items from `PROJECT_SPEC.md § Required proof` are present with real content.
+No unresolved placeholder markers remain in `src/content/site.ts` or any page component; all Required proof items from `PROJECT_SPEC.md § Required proof` are present with real content or explicitly marked as pending when the source brief itself is incomplete.
 
 ---
 
 ## Notes
 
-Public site scope was narrowed during this sprint so the portfolio only shows resume-relevant content for the Cloud Security Engineer - AI Trainer target. Workflow/process/meta content was removed from public routes and the homepage.
-Real project details and LinkedIn still need to be supplied before this sprint can close.
+Public site scope is now aligned to an applied-AI portfolio brief centered on context engineering, evaluation design, technical communication, and practical project work.
+The revised midterm project still needs its final exact title, tools, links, and screenshots before this sprint can close.

@@ -4,9 +4,9 @@ import { SectionHeading, SiteFrame, StatusPill } from '@/components/SiteFrame';
 import { site } from '@/content/site';
 
 const hubSignals = [
-  'Role-fit research',
-  'Searchable project evidence',
-  'Modal deep-dive detail',
+  'Career direction',
+  'Searchable project summaries',
+  'Architecture and evaluation detail',
 ] as const;
 
 export default function FocusHub() {
@@ -20,13 +20,13 @@ export default function FocusHub() {
             <Reveal>
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 font-code text-code-sm text-primary">
                 <span aria-hidden="true">▣</span>
-                Intelligence Hub
+                Focus Hub
               </div>
               <h1 className="mt-6 max-w-3xl font-display text-[clamp(2.8rem,6vw,5rem)] font-bold leading-[0.95] tracking-[-0.04em] text-on-surface text-glow">
-                Research and project detail behind the public homepage.
+                Deeper context behind the public homepage.
               </h1>
               <p className="mt-5 max-w-2xl text-lg text-on-surface-variant">
-                This route acts as the bridge between the homepage and the deeper evidence layers. It keeps the navigation simple while giving the redesign a dedicated orientation surface.
+                This route bridges the homepage and the deeper portfolio surfaces. It keeps the navigation simple while separating career direction from the searchable project layer.
               </p>
               <div className="mt-8 flex flex-wrap gap-2">
                 {hubSignals.map((signal) => (
@@ -54,14 +54,14 @@ export default function FocusHub() {
                 <article className="liquid-glass rounded-[26px] p-6 inner-glow">
                   <div className="font-code text-label-caps uppercase text-primary">Current Public Scope</div>
                   <p className="mt-4 text-body-md text-on-surface-variant">
-                    Every page stays recruiter-facing and evidence-first. The redesign adds stronger interaction patterns without expanding into unsupported claims or framework commentary.
+                    Every page stays recruiter-facing and project-focused. The deeper routes explain direction, system thinking, and project architecture without inflating experience claims.
                   </p>
                 </article>
                 <article className="liquid-glass rounded-[26px] p-6 glass-hover">
                   <div className="font-code text-label-caps uppercase text-primary">Where to go next</div>
                   <div className="mt-4 space-y-4 text-sm text-on-surface-variant">
-                    <p>Use Research for role-fit framing, evaluation standards, and cloud-aware AI review logic.</p>
-                    <p>Use Projects for searchable evidence lanes and modal-based detail on each portfolio entry.</p>
+                    <p>Use Direction for applied AI role framing, system-design interest, and evaluation standards.</p>
+                    <p>Use Projects for searchable summaries and modal-based details on each portfolio entry.</p>
                   </div>
                 </article>
               </div>
@@ -71,9 +71,9 @@ export default function FocusHub() {
 
         <section className="mt-12">
           <SectionHeading
-            description="The hub keeps the routing small but gives the redesign a dedicated place to explain what each deeper page is supposed to do."
+            description="The hub keeps the routing small while giving each deeper page a distinct job in the portfolio narrative."
             eyebrow="Navigation Layers"
-            title="Two deeper routes, each with a distinct review job."
+            title="Two deeper routes, each with a different review purpose."
           />
           <StaggerGroup className="grid gap-5 lg:grid-cols-2">
             {site.focusPages.map((page) => (

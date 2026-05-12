@@ -10,88 +10,20 @@ const heroBackground =
 const aboutBackground =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuAKpW1fkp5LUp6Af7umvmM6mClUJ_mRgl_LlEDf2STTxagUumXvl0_z54pV3uZNHfMcDVeFCBU2ZRZdcQ5zQcQ7k_fJIaocynAreOkEMWNbo2XBljXlCiD9rjcgCjxe9yZ363B7o-wBnNfv29T1IbR9U2jdTLyBMm1GnEN7vgR4gfIxcNL-Gp9Hxj3VCAw1QxB3DgmuL1cD6C2MuCU5qUDGjxNTnYBCdoiRrEcMabRfVMA9wyDlEyZzyGpGvDJt1lWgD2395HjvTRPX';
 
-const heroTitle = 'Nicholas Nelson';
-const heroSubtitle = 'Security-minded IT student building practical AI-assisted tools.';
-
-const skillCards = [
-  {
-    icon: 'code',
-    iconClass: 'text-primary border-primary/30 bg-primary-container/20',
-    title: 'Programming & Scripting',
-    items: ['Python (Core Toolset)', 'Linux (CLI & Shell)', 'HTML / CSS', 'SQL (Database Fundamentals)'],
-  },
-  {
-    icon: 'psychology',
-    iconClass: 'text-secondary border-secondary/30 bg-secondary-container/20',
-    title: 'AI-Assisted Development',
-    items: ['Prompt Engineering', 'AI Output Review', 'AI-Driven Tool Building', 'Code Refactoring & Review'],
-  },
-  {
-    icon: 'shield',
-    iconClass: 'text-tertiary border-tertiary/30 bg-tertiary-container/20',
-    title: 'Cybersecurity & Networking',
-    items: ['Wireshark (Packet Analysis)', 'Network Protocol Mapping', 'Vulnerability Research', 'Secure System Configuration'],
-  },
-  {
-    icon: 'build',
-    iconClass: 'text-primary-container border-primary-container/30 bg-primary-container/10',
-    title: 'Developer Tools',
-    items: ['Git & GitHub', 'VS Code', 'Virtualized Lab Environments', 'Markdown Documentation'],
-  },
-  {
-    icon: 'assignment_turned_in',
-    iconClass: 'text-secondary-fixed border-secondary-fixed/30 bg-secondary-fixed/10',
-    title: 'Software Practices',
-    items: ['Technical Writing', 'Structured Analysis', 'Security-First Review', 'Evidence-Controlled Publishing'],
-  },
+const skillIcons = [
+  { icon: 'psychology', iconClass: 'text-primary border-primary/30 bg-primary-container/20' },
+  { icon: 'code', iconClass: 'text-secondary border-secondary/30 bg-secondary-container/20' },
+  { icon: 'query_stats', iconClass: 'text-tertiary border-tertiary/30 bg-tertiary-container/20' },
+  { icon: 'hub', iconClass: 'text-primary-container border-primary-container/30 bg-primary-container/10' },
 ] as const;
 
-const homeProjects = [
-  {
-    icon: 'construction',
-    iconClass: 'text-primary border-primary/20 bg-primary/10',
-    title: 'Revised Midterm Project',
-    body: 'Reserved for the verified final summary of the revised assignment once the public-safe details are confirmed.',
-    tags: ['Revision', 'Academic Work', 'Evidence Control'],
-    action: 'Project Deck',
-  },
-  {
-    icon: 'deployed_code',
-    iconClass: 'text-secondary border-secondary/20 bg-secondary/10',
-    title: 'AI-Maintained Portfolio',
-    body: 'This site itself, used as a public-facing example of AI-assisted iteration, design translation, and evidence-scoped publishing.',
-    tags: ['React', 'Tailwind', 'AI Collaboration'],
-    action: 'Explore System',
-  },
-  {
-    icon: 'event_note',
-    iconClass: 'text-tertiary border-tertiary/20 bg-tertiary/10',
-    title: 'Job Technology Project',
-    body: 'Reserved for the verified technology or role-alignment summary once the final project framing is ready for public review.',
-    tags: ['Career Mapping', 'Technology Review', 'Cloud Direction'],
-    action: 'Project Deck',
-  },
-  {
-    icon: 'lan',
-    iconClass: 'text-primary-container border-primary-container/20 bg-primary-container/10',
-    title: 'Network and Security Labs',
-    body: 'Hands-on lab work supporting packet analysis, network reasoning, and security fundamentals in controlled environments.',
-    tags: ['Wireshark', 'Linux', 'Networking'],
-    action: 'Lab Notes',
-  },
+const projectIcons = [
+  { icon: 'auto_awesome', iconClass: 'text-primary border-primary/20 bg-primary/10' },
+  { icon: 'edit_square', iconClass: 'text-secondary border-secondary/20 bg-secondary/10' },
+  { icon: 'model_training', iconClass: 'text-tertiary border-tertiary/20 bg-tertiary/10' },
+  { icon: 'phone_iphone', iconClass: 'text-primary-container border-primary-container/20 bg-primary-container/10' },
+  { icon: 'movie', iconClass: 'text-secondary-fixed border-secondary-fixed/20 bg-secondary-fixed/10' },
 ] as const;
-
-const coursework = [
-  'Network Protocols',
-  'Information Security Fundamentals',
-  'Systems Analysis',
-  'Linux Operating Systems',
-  'Technical Writing',
-  'Python for IT',
-] as const;
-
-const certifications = ['ServSafe Certification'] as const;
-const plannedCertifications = ['CompTIA Network+', 'CompTIA Security+', 'Google Cybersecurity Certificate'] as const;
 
 function scrollToSection(id: string) {
   return (event: MouseEvent<HTMLAnchorElement>) => {
@@ -126,11 +58,14 @@ export default function HomePage() {
               <a className="magnetic-target border-b border-transparent font-body text-body-md font-medium text-on-surface-variant hover:border-primary/40 hover:text-primary" href="#about" onClick={scrollToSection('about')}>
                 About
               </a>
+              <a className="magnetic-target border-b border-transparent font-body text-body-md font-medium text-on-surface-variant hover:border-primary/40 hover:text-primary" href="#direction" onClick={scrollToSection('direction')}>
+                Direction
+              </a>
               <a className="magnetic-target border-b border-transparent font-body text-body-md font-medium text-on-surface-variant hover:border-primary/40 hover:text-primary" href="#skills" onClick={scrollToSection('skills')}>
                 Skills
               </a>
-              <a className="magnetic-target border-b border-transparent font-body text-body-md font-medium text-on-surface-variant hover:border-primary/40 hover:text-primary" href="#education" onClick={scrollToSection('education')}>
-                Education
+              <a className="magnetic-target border-b border-transparent font-body text-body-md font-medium text-on-surface-variant hover:border-primary/40 hover:text-primary" href="#contact" onClick={scrollToSection('contact')}>
+                Contact
               </a>
             </nav>
             <a
@@ -155,27 +90,23 @@ export default function HomePage() {
                 <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'FILL' 1" }} aria-hidden="true">
                   terminal
                 </span>
-                NJIT // IT STUDENT // CYBER &amp; AI
+                {site.home.eyebrow}
               </div>
               <h1 className="kinetic-text mt-6 font-display text-display-lg font-black leading-none text-on-surface text-glow md:text-[84px]">
-                {heroTitle}
+                {site.person.name}
               </h1>
-              <h2 className="mb-6 mt-2 font-display text-headline-lg text-primary">{heroSubtitle}</h2>
-              <p className="mx-auto mb-8 max-w-3xl text-body-md text-on-surface-variant">
-                Pursuing a BS in Information Technology at NJIT with a focus on Network and Information Security. Currently developing efficiency-focused tools using Python, Linux, and Wireshark, while leveraging AI and Git to bridge the gap between complex systems and practical, everyday solutions.
-              </p>
+              <h2 className="mb-3 mt-2 font-display text-headline-lg text-primary">{site.person.title}</h2>
+              <p className="mx-auto mb-4 max-w-3xl font-display text-headline-sm text-on-surface">{site.person.headline}</p>
+              <p className="mx-auto mb-8 max-w-3xl text-body-md text-on-surface-variant">{site.person.summary}</p>
               <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
                 <a className="btn-pill magnetic-target w-full bg-primary px-8 py-4 text-center font-body text-body-md font-bold text-on-primary shadow-[0_0_20px_rgba(173,198,255,0.4)] md:w-auto" href="#projects" onClick={scrollToSection('projects')}>
                   View Projects
                 </a>
-                <a
-                  className="btn-pill magnetic-target liquid-glass glass-hover w-full px-8 py-4 text-center font-body text-body-md font-bold text-on-surface md:w-auto"
-                  href={site.links.liveSite || '#'}
-                >
-                  View Resume
-                </a>
                 <a className="btn-pill magnetic-target liquid-glass glass-hover flex w-full items-center justify-center gap-2 px-8 py-4 text-center font-body text-body-md font-medium text-on-surface-variant md:w-auto" href={site.links.github} rel="noreferrer" target="_blank">
                   GitHub
+                </a>
+                <a className="btn-pill magnetic-target liquid-glass glass-hover flex w-full items-center justify-center gap-2 px-8 py-4 text-center font-body text-body-md font-medium text-on-surface-variant md:w-auto" href={site.links.linkedin} rel="noreferrer" target="_blank">
+                  LinkedIn
                 </a>
               </div>
             </Reveal>
@@ -185,8 +116,8 @@ export default function HomePage() {
             <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-10">
               <Reveal>
                 <div className="mb-12">
-                  <span className="mb-4 block font-code text-label-caps uppercase tracking-widest text-primary">Core Philosophy</span>
-                  <h2 className="mb-2 font-display text-headline-lg text-on-surface">Structured, Practical, Secure.</h2>
+                  <span className="mb-4 block font-code text-label-caps uppercase tracking-widest text-primary">{site.home.aboutEyebrow}</span>
+                  <h2 className="mb-2 font-display text-headline-lg text-on-surface">{site.home.aboutTitle}</h2>
                   <div className="h-1 w-20 rounded-full bg-primary" />
                 </div>
 
@@ -209,24 +140,91 @@ export default function HomePage() {
             </div>
           </section>
 
+          <section className="bg-surface-container-low/30 py-20" id="direction">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
+              <Reveal>
+                <div className="mb-12">
+                  <span className="mb-4 block font-code text-label-caps uppercase tracking-widest text-primary">{site.home.careerEyebrow}</span>
+                  <h2 className="mb-2 font-display text-headline-lg text-on-surface">{site.home.careerTitle}</h2>
+                  <p className="max-w-3xl text-on-surface-variant">{site.home.careerSummary[0]}</p>
+                  <div className="mt-4 h-1 w-20 rounded-full bg-primary" />
+                </div>
+              </Reveal>
+
+              <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+                <Reveal className="liquid-glass rounded-[28px] p-8">
+                  <div className="font-code text-label-caps uppercase text-primary">Current Direction</div>
+                  <h3 className="mt-4 font-display text-3xl font-semibold tracking-[-0.03em] text-on-surface">
+                    {site.direction.currentFocus}
+                  </h3>
+                  <div className="mt-5 space-y-4 text-on-surface-variant">
+                    <p>{site.direction.shortExplanation}</p>
+                    {site.direction.details.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </div>
+                </Reveal>
+
+                <Reveal delay={0.08} className="liquid-glass rounded-[28px] p-8 inner-glow">
+                  <div className="font-code text-label-caps uppercase text-primary">Why It Fits</div>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {site.research.signals.map((signal) => (
+                      <StatusPill key={signal} label={signal} tone="active" />
+                    ))}
+                  </div>
+                  <p className="mt-5 text-on-surface-variant">{site.direction.details[1]}</p>
+                </Reveal>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-20" id="focus-areas">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
+              <Reveal>
+                <div className="mb-12">
+                  <span className="mb-4 block font-code text-label-caps uppercase tracking-widest text-primary">{site.home.focusEyebrow}</span>
+                  <h2 className="mb-2 font-display text-headline-lg text-on-surface">{site.home.focusTitle}</h2>
+                  <p className="max-w-3xl text-on-surface-variant">{site.home.focusSummary}</p>
+                  <div className="mt-4 h-1 w-20 rounded-full bg-primary" />
+                </div>
+              </Reveal>
+
+              <StaggerGroup className="grid grid-cols-1 gap-5 md:grid-cols-2">
+                {site.home.focusAreas.map((area) => (
+                  <StaggerItem className="liquid-glass glass-hover rounded-xl p-8" key={area.title}>
+                    <div className="font-code text-label-caps uppercase text-primary">Focus Area</div>
+                    <h3 className="mt-3 font-display text-[24px] font-semibold text-on-surface">{area.title}</h3>
+                    <p className="mt-4 text-on-surface-variant">{area.body}</p>
+                  </StaggerItem>
+                ))}
+              </StaggerGroup>
+            </div>
+          </section>
+
           <section className="bg-surface-container-low/30 py-20" id="skills">
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
               <Reveal>
                 <div className="mb-12">
-                  <h2 className="mb-2 font-display text-headline-lg text-on-surface">Technical Arsenal</h2>
+                  <span className="mb-4 block font-code text-label-caps uppercase tracking-widest text-primary">{site.home.skillsEyebrow}</span>
+                  <h2 className="mb-2 font-display text-headline-lg text-on-surface">{site.home.skillsTitle}</h2>
+                  <p className="max-w-3xl text-on-surface-variant">{site.home.skillsSummary}</p>
                   <div className="h-1 w-20 rounded-full bg-primary" />
                 </div>
               </Reveal>
 
-              <StaggerGroup className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-                {skillCards.map((card) => (
+              <StaggerGroup className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2">
+                {site.skills.map((card, index) => {
+                  const iconData = skillIcons[index % skillIcons.length];
+
+                  return (
                   <StaggerItem className="liquid-glass glass-hover rounded-xl p-8" key={card.title}>
                     <div className="mb-6 flex items-center gap-3">
-                      <div className={`flex h-12 w-12 items-center justify-center rounded-lg border ${card.iconClass}`}>
-                        <span className="material-symbols-outlined">{card.icon}</span>
+                      <div className={`flex h-12 w-12 items-center justify-center rounded-lg border ${iconData.iconClass}`}>
+                        <span className="material-symbols-outlined">{iconData.icon}</span>
                       </div>
                       <h3 className="font-body text-body-md font-bold text-on-surface">{card.title}</h3>
                     </div>
+                    <p className="mb-4 text-sm text-on-surface-variant">{card.summary}</p>
                     <ul className="space-y-2 font-code text-code-sm text-on-surface-variant">
                       {card.items.map((item) => (
                         <li className="flex items-center gap-2" key={item}>
@@ -236,7 +234,7 @@ export default function HomePage() {
                       ))}
                     </ul>
                   </StaggerItem>
-                ))}
+                )})}
               </StaggerGroup>
             </div>
           </section>
@@ -245,21 +243,29 @@ export default function HomePage() {
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
               <Reveal>
                 <div className="mb-12">
-                  <h2 className="kinetic-text mb-2 font-display text-headline-lg text-on-surface">Strategic Deployments</h2>
-                  <p className="text-on-surface-variant">Practical applications of AI and cybersecurity fundamentals.</p>
+                  <span className="mb-4 block font-code text-label-caps uppercase tracking-widest text-primary">{site.home.projectsEyebrow}</span>
+                  <h2 className="kinetic-text mb-2 font-display text-headline-lg text-on-surface">{site.home.projectsTitle}</h2>
+                  <p className="text-on-surface-variant">{site.home.projectsSummary}</p>
                   <div className="mt-4 h-1 w-20 rounded-full bg-primary" />
                 </div>
               </Reveal>
 
               <StaggerGroup className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                {homeProjects.map((project) => (
-                  <StaggerItem className="liquid-glass glass-hover flex flex-col gap-5 rounded-xl p-8" key={project.title}>
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-lg border ${project.iconClass}`}>
-                      <span className="material-symbols-outlined">{project.icon}</span>
+                {site.projects.map((project, index) => {
+                  const iconData = projectIcons[index % projectIcons.length];
+
+                  return (
+                  <StaggerItem className="liquid-glass glass-hover flex flex-col gap-5 rounded-xl p-8" key={project.slug}>
+                    <div className={`flex h-12 w-12 items-center justify-center rounded-lg border ${iconData.iconClass}`}>
+                      <span className="material-symbols-outlined">{iconData.icon}</span>
                     </div>
                     <div>
-                      <h3 className="mb-2 font-display text-[24px] font-semibold text-on-surface">{project.title}</h3>
-                      <p className="mb-5 text-on-surface-variant">{project.body}</p>
+                      <div className="mb-3 flex flex-wrap gap-2">
+                        <StatusPill label={project.status} tone={project.statusTone} />
+                        <StatusPill label={project.category} tone="default" />
+                      </div>
+                      <h3 className="mb-2 font-display text-[24px] font-semibold text-on-surface">{project.name}</h3>
+                      <p className="mb-5 text-on-surface-variant">{project.summary}</p>
                       <div className="flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
                           <span className="rounded border border-white/10 bg-surface-variant px-2 py-1 font-code text-[11px] text-on-surface-variant" key={tag}>
@@ -269,82 +275,93 @@ export default function HomePage() {
                       </div>
                     </div>
                     <div className="mt-auto flex items-center gap-2 pt-4 font-body text-body-md font-bold text-primary">
-                      {project.action}
+                      Open in project view
                       <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
                     </div>
                   </StaggerItem>
-                ))}
+                )})}
               </StaggerGroup>
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link className="btn-pill inline-flex items-center rounded-full bg-primary px-6 py-3 font-code text-code-sm font-semibold text-on-primary shadow-[0_0_20px_rgba(173,198,255,0.32)]" to="/focus/projects">
                   Open Search View
                 </Link>
-                <StatusPill label="Pending facts stay marked" tone="pending" />
+                <StatusPill label={`${site.projects.length} featured summaries`} tone="active" />
               </div>
             </div>
           </section>
 
-          <section className="bg-surface-container-low/30 py-20" id="education">
+          <section className="bg-surface-container-low/30 py-20" id="contact">
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 sm:px-6 md:grid-cols-2 lg:px-10">
               <Reveal>
                 <div className="mb-12">
-                  <h2 className="mb-2 font-display text-headline-lg text-on-surface">Education</h2>
+                  <span className="mb-4 block font-code text-label-caps uppercase tracking-widest text-primary">{site.home.contactEyebrow}</span>
+                  <h2 className="mb-2 font-display text-headline-lg text-on-surface">{site.home.contactTitle}</h2>
+                  <p className="max-w-2xl text-on-surface-variant">{site.home.contactSummary}</p>
                   <div className="h-1 w-20 rounded-full bg-primary" />
                 </div>
 
                 <div className="liquid-glass rounded-xl p-8">
-                  <div className="mb-6 flex items-start justify-between gap-4">
-                    <div>
-                      <h3 className="text-lg font-bold text-on-surface">NJIT (New Jersey Institute of Technology)</h3>
-                      <p className="font-medium text-primary">BS in Information Technology</p>
+                  <div className="space-y-4 text-on-surface-variant">
+                    <p>{site.home.contactSummary}</p>
+                    <div className="flex flex-wrap gap-3">
+                      <a className="btn-pill inline-flex items-center rounded-full bg-primary px-6 py-3 font-code text-code-sm font-semibold text-on-primary shadow-[0_0_20px_rgba(173,198,255,0.32)]" href={site.links.github} rel="noreferrer" target="_blank">
+                        GitHub
+                      </a>
+                      <a className="btn-pill inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 font-code text-code-sm text-on-surface-variant hover:border-primary/30 hover:text-primary" href={site.links.linkedin} rel="noreferrer" target="_blank">
+                        LinkedIn
+                      </a>
+                      <a className="btn-pill inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 font-code text-code-sm text-on-surface-variant hover:border-primary/30 hover:text-primary" href={`mailto:${site.links.email}`}>
+                        Email
+                      </a>
                     </div>
-                    <span className="whitespace-nowrap font-code text-code-sm text-primary">Expected Fall 2026</span>
-                  </div>
-                  <p className="mb-6 text-sm italic text-on-surface-variant">Specialization: Network and Information Security</p>
-                  <div>
-                    <h4 className="mb-2 font-code text-label-caps uppercase text-on-surface-variant">Relevant Coursework</h4>
-                    <ul className="grid grid-cols-1 gap-2 font-code text-code-sm text-on-surface-variant sm:grid-cols-2">
-                      {coursework.map((course) => (
-                        <li key={course}>• {course}</li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
               </Reveal>
 
               <Reveal delay={0.12}>
                 <div className="mb-12">
-                  <h2 className="mb-2 font-display text-headline-lg text-on-surface">Certifications</h2>
+                  <h2 className="mb-2 font-display text-headline-lg text-on-surface">Direct Links</h2>
                   <div className="h-1 w-20 rounded-full bg-secondary" />
                 </div>
 
                 <div className="space-y-5">
-                  {certifications.map((cert) => (
-                    <div className="liquid-glass flex items-center gap-4 rounded-xl p-5" key={cert}>
+                  {[
+                    { label: 'GitHub', value: site.links.github, href: site.links.github, icon: 'code' },
+                    { label: 'LinkedIn', value: site.links.linkedin, href: site.links.linkedin, icon: 'person' },
+                    { label: 'Email', value: site.links.email, href: `mailto:${site.links.email}`, icon: 'mail' },
+                  ].map((item) => (
+                    <a
+                      className="liquid-glass glass-hover flex items-center gap-4 rounded-xl p-5 transition-all duration-300 hover:border-primary/30"
+                      href={item.href}
+                      key={item.label}
+                      rel={item.label === 'Email' ? undefined : 'noreferrer'}
+                      target={item.label === 'Email' ? undefined : '_blank'}
+                    >
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary/20 text-secondary">
-                        <span className="material-symbols-outlined">workspace_premium</span>
+                        <span className="material-symbols-outlined">{item.icon}</span>
                       </div>
                       <div>
-                        <h4 className="font-bold text-on-surface">{cert}</h4>
-                        <p className="text-xs text-on-surface-variant">Professional Standard Compliance</p>
+                        <h4 className="font-bold text-on-surface">{item.label}</h4>
+                        <p className="text-xs text-on-surface-variant break-all">{item.value}</p>
                       </div>
-                    </div>
+                    </a>
                   ))}
 
-                  <div className="liquid-glass rounded-xl border border-dashed border-outline-variant/30 p-5">
+                  <a
+                    className="liquid-glass glass-hover block rounded-xl border border-dashed border-outline-variant/30 p-5 transition-all duration-300 hover:border-primary/30"
+                    href={site.links.liveSite}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
                     <div className="mb-2 flex items-center gap-4">
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-variant/50 text-on-surface-variant">
-                        <span className="material-symbols-outlined">hourglass_empty</span>
+                        <span className="material-symbols-outlined">public</span>
                       </div>
-                      <h4 className="font-bold text-on-surface-variant">In Progress / Planned</h4>
+                      <h4 className="font-bold text-on-surface-variant">Live Portfolio</h4>
                     </div>
-                    <ul className="ml-14 space-y-2 text-sm text-on-surface-variant">
-                      {plannedCertifications.map((cert) => (
-                        <li key={cert}>• {cert}</li>
-                      ))}
-                    </ul>
-                  </div>
+                    <p className="ml-14 text-sm text-on-surface-variant break-all">{site.links.liveSite}</p>
+                  </a>
                 </div>
               </Reveal>
             </div>
@@ -355,9 +372,7 @@ export default function HomePage() {
           <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-12 md:flex-row">
             <div className="max-w-xs">
               <div className="mb-6 font-display text-headline-lg-mobile font-black tracking-[-0.08em] text-on-surface">NICHOLAS_NELSON</div>
-              <p className="mb-8 text-sm text-on-surface-variant">
-                Security-minded IT student building practical AI-assisted tools. Focused on clear technical reasoning and evidence-controlled public work.
-              </p>
+              <p className="mb-8 text-sm text-on-surface-variant">{site.home.footerSummary}</p>
               <div className="flex gap-4">
                 <a className="text-on-surface-variant transition-colors hover:text-primary" href={site.links.github} rel="noreferrer" target="_blank">
                   <span className="material-symbols-outlined">code</span>
@@ -376,6 +391,7 @@ export default function HomePage() {
                 <ul className="space-y-2 text-sm text-on-surface-variant">
                   <li><a className="hover:text-primary" href="#main-content" onClick={scrollToSection('main-content')}>Home</a></li>
                   <li><a className="hover:text-primary" href="#about" onClick={scrollToSection('about')}>About</a></li>
+                  <li><a className="hover:text-primary" href="#direction" onClick={scrollToSection('direction')}>Direction</a></li>
                   <li><a className="hover:text-primary" href="#projects" onClick={scrollToSection('projects')}>Projects</a></li>
                   <li><a className="hover:text-primary" href="#skills" onClick={scrollToSection('skills')}>Skills</a></li>
                 </ul>
@@ -385,15 +401,15 @@ export default function HomePage() {
                 <h4 className="mb-4 font-bold text-on-surface">Contact</h4>
                 <ul className="space-y-2 text-sm text-on-surface-variant">
                   <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[16px]">mail</span> {site.links.email || 'GitHub contact available'}</li>
-                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[16px]">location_on</span> Newark, NJ</li>
-                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[16px]">school</span> NJIT Student</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[16px]">code</span> {site.links.github}</li>
+                  <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[16px]">person</span> {site.links.linkedin}</li>
                 </ul>
               </div>
             </div>
           </div>
 
           <div className="mx-auto mt-16 max-w-6xl border-t border-outline-variant/5 pt-5 text-center text-xs text-on-surface-variant/50">
-            © 2026 NICHOLAS NELSON // DESIGNED WITH AI // SECURE_PORTFOLIO_V1.0
+            © 2026 NICHOLAS NELSON // APPLIED_AI_SYSTEMS_PORTFOLIO
           </div>
         </footer>
       </main>
