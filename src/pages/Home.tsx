@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom';
 import { Reveal, ScrollProgressBar, StaggerGroup, StaggerItem } from '@/components/Reveal';
 import { StatusPill } from '@/components/SiteFrame';
 import { site } from '@/content/site';
+import profilePhoto from '@/assets/profile-photo.png';
 
 const heroBackground =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuAY_CD_-HgmxN8RQbi3wxGGZ-k25Q4qQ4TvY63xZGkK_kSdlyyI9U9LLyRCj6AMfARhHjpX8gaJwyV2l2ONlXwZp8N25IUe6L4gMBdqk3SWDR8TxlGltd0zUHMCGUSkvLM52ixxFE94tmwfLUimhasdP_q2L8e0vqtk5kHL_BWjqUmcMLG6uJsOBBs4Zv2PL23UB3OxJtkd1iP3Aby_WSlWQA-9nBwgnQUNM4dWdHYYKx8MEQJom_dbBvFUeWlhdS3WRsiw7Vf8xMuc';
-
-const aboutBackground =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuAKpW1fkp5LUp6Af7umvmM6mClUJ_mRgl_LlEDf2STTxagUumXvl0_z54pV3uZNHfMcDVeFCBU2ZRZdcQ5zQcQ7k_fJIaocynAreOkEMWNbo2XBljXlCiD9rjcgCjxe9yZ363B7o-wBnNfv29T1IbR9U2jdTLyBMm1GnEN7vgR4gfIxcNL-Gp9Hxj3VCAw1QxB3DgmuL1cD6C2MuCU5qUDGjxNTnYBCdoiRrEcMabRfVMA9wyDlEyZzyGpGvDJt1lWgD2395HjvTRPX';
 
 const skillIcons = [
   { icon: 'psychology', iconClass: 'text-primary border-primary/30 bg-primary-container/20' },
@@ -129,10 +127,10 @@ export default function HomePage() {
                   </div>
 
                   <div className="relative flex h-64 items-center justify-center overflow-hidden rounded-xl bg-surface-container-lowest md:h-full">
-                    <img alt="Abstract technical nodes" className="absolute inset-0 h-full w-full object-cover opacity-20 mix-blend-screen" src={aboutBackground} />
-                    <div className="relative z-10 p-6 text-center">
-                      <span className="material-symbols-outlined mb-3 text-[64px] text-primary">verified_user</span>
-                      <div className="font-code text-code-sm text-primary-fixed">EST. 2026 // NJIT</div>
+                    <img alt="Portrait of Nicholas Nelson" className="absolute inset-0 h-full w-full object-cover" src={profilePhoto} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/35 to-transparent" />
+                    <div className="absolute bottom-1 left-1/2 z-10 -translate-x-1/2 rounded-full border border-primary/30 bg-surface-container/70 px-4 py-2 font-code text-code-sm text-primary-fixed backdrop-blur-sm">
+                      EST. 2026 // NJIT
                     </div>
                   </div>
                 </div>
