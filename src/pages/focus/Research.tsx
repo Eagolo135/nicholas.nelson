@@ -1,131 +1,108 @@
-import { Reveal, ScrollProgressBar, StaggerGroup, StaggerItem } from '@/components/Reveal';
-import { site } from '@/content/site';
 import { Link } from 'react-router-dom';
-
-const researchSignals = [
-  'Cloud security fit',
-  'AI evaluation standards',
-  'Risk-based review',
-  'Clear technical writing',
-] as const;
-
-const roleDetails = [
-  {
-    label: 'Role scope',
-    body: 'Evaluate AI-generated cybersecurity content for technical accuracy, completeness, and safety, especially where cloud and infrastructure topics are involved.',
-  },
-  {
-    label: 'Why it matters',
-    body: 'Security feedback for AI systems has to be technically correct. In cloud environments, incomplete guidance can create real operational risk.',
-  },
-  {
-    label: 'Current fit',
-    body: 'This portfolio shows student-level work in security concepts, scripting, research, and technical communication, with an emphasis on careful review rather than unsupported claims.',
-  },
-  {
-    label: 'Next upgrade',
-    body: 'The next content upgrade is adding final project details and stronger cloud-specific proof so the public work matches the target role more directly.',
-  },
-] as const;
+import { Reveal, ScrollProgressBar, StaggerGroup, StaggerItem } from '@/components/Reveal';
+import { SectionHeading, SiteFrame, StatusPill } from '@/components/SiteFrame';
+import { site } from '@/content/site';
 
 export default function Research() {
   return (
     <>
       <ScrollProgressBar />
-      <main className="shell shell-home">
-        <header className="topbar">
-          <div className="brand">
-            <strong>Research focus</strong>
-            <span>{site.direction.currentFocus}</span>
+      <SiteFrame>
+        <section className="liquid-glass-strong relative overflow-hidden rounded-[32px] border border-white/10 p-6 sm:p-8 lg:p-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10" />
+          <div className="relative grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+            <Reveal>
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 font-code text-code-sm text-primary">
+                <span aria-hidden="true">▣</span>
+                Career Research
+              </div>
+              <h1 className="mt-6 max-w-3xl font-display text-[clamp(2.8rem,6vw,5rem)] font-bold leading-[0.95] tracking-[-0.04em] text-on-surface text-glow">
+                {site.direction.currentFocus}
+              </h1>
+              <p className="mt-5 max-w-2xl text-lg text-on-surface-variant">{site.research.summary}</p>
+              <div className="mt-8 flex flex-wrap gap-2">
+                {site.research.signals.map((signal) => (
+                  <StatusPill key={signal} label={signal} tone="active" />
+                ))}
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.08}>
+              <article className="liquid-glass rounded-[28px] p-6 inner-glow">
+                <div className="font-code text-label-caps uppercase text-primary">Research Summary</div>
+                <div className="mt-5 space-y-5 text-on-surface-variant">
+                  <p>
+                    The role works as a target because it depends on technical judgment instead of only tool familiarity. That is where research quality, review habits, and careful explanation start to matter.
+                  </p>
+                  <p>
+                    The public site stays conservative on purpose: it shows the role case clearly, but it does not overstate finished cloud-specific proof where the underlying project detail is still being verified.
+                  </p>
+                </div>
+              </article>
+            </Reveal>
           </div>
-          <nav className="nav" aria-label="Focus navigation">
-            <Link to="/">Home</Link>
-            <Link to="/focus">Focus hub</Link>
-            <Link to="/focus/projects">Projects</Link>
-          </nav>
-        </header>
-
-        <section className="hero" aria-labelledby="research-title">
-          <Reveal className="hero-copy">
-            <div className="eyebrow">Career research</div>
-            <h1 id="research-title">Cloud Security Engineer - AI Trainer</h1>
-            <p className="lede">{site.sections.research}</p>
-            <p className="small">This page keeps the role explanation compact and evidence-oriented so it supports the portfolio instead of drifting into general notes.</p>
-
-            <div className="hero-pills">
-              {researchSignals.map((signal) => (
-                <span className="pill" key={signal}>{signal}</span>
-              ))}
-            </div>
-          </Reveal>
-
-          <Reveal className="hero-stage" delay={0.08}>
-            <div className="hero-visual">
-              <div className="hero-ambient" aria-hidden="true">
-                <span className="ambient-orb ambient-orb-cyan" />
-                <span className="ambient-orb ambient-orb-magenta" />
-                <span className="ambient-grid" />
-              </div>
-
-              <div className="signal-board">
-                <div className="signal-board-header">
-                  <span className="window-label">Research summary</span>
-                  <span className="signal-board-status">Role-fit review</span>
-                </div>
-
-                <div className="signal-board-grid">
-                  <article className="mini-card signal-panel signal-panel-wide">
-                    <span className="mini-card-label">What this page answers</span>
-                    <strong>Why this role fits the portfolio direction.</strong>
-                    <p>The research case is based on technical accuracy, cloud awareness, AI evaluation, and the ability to explain security reasoning clearly.</p>
-                  </article>
-
-                  <article className="mini-card signal-panel">
-                    <span className="mini-card-label">Current emphasis</span>
-                    <strong>Accuracy before automation</strong>
-                  </article>
-
-                  <article className="mini-card signal-panel">
-                    <span className="mini-card-label">Evidence gap</span>
-                    <strong>Cloud-specific project detail still needs verification</strong>
-                  </article>
-                </div>
-              </div>
-            </div>
-          </Reveal>
         </section>
 
-        <section className="section">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow">Role breakdown</div>
-              <h2>What this direction depends on.</h2>
-            </div>
-            <p className="muted">The role is attractive because it combines cloud security judgment with the review discipline needed to evaluate AI-generated technical content.</p>
-          </div>
-
-          <StaggerGroup className="capability-grid">
-            {roleDetails.map(({ label, body }) => (
-              <StaggerItem key={label} className="capability-card">
-                <span className="feature-kicker">{label}</span>
-                <p className="muted">{body}</p>
+        <section className="mt-12">
+          <SectionHeading
+            description="These role details explain why the direction fits this portfolio and what still needs to improve before the case is stronger."
+            eyebrow="Role Breakdown"
+            title="What this direction depends on."
+          />
+          <StaggerGroup className="grid gap-5 lg:grid-cols-2">
+            {site.research.roleDetails.map((detail) => (
+              <StaggerItem key={detail.title} className="liquid-glass rounded-[28px] p-6 glass-hover">
+                <div className="font-code text-label-caps uppercase text-primary">{detail.title}</div>
+                <p className="mt-4 text-sm text-on-surface-variant">{detail.body}</p>
               </StaggerItem>
             ))}
           </StaggerGroup>
         </section>
 
-        <Reveal className="cta-panel" delay={0.1}>
-          <div>
-            <div className="eyebrow">Next page</div>
-            <h2>Move from role fit to project proof.</h2>
-            <p className="muted">Projects are the practical side of this case. They still need final detail, but they already define what evidence belongs in the portfolio.</p>
+        <section className="mt-12">
+          <SectionHeading
+            description="These standards are the basis for judging whether AI-generated security guidance is useful, incomplete, or unsafe."
+            eyebrow="Evaluation Standards"
+            title="How technical answers should be judged."
+          />
+          <div className="grid gap-5 lg:grid-cols-3">
+            {site.research.evaluationStandards.map((standard) => (
+              <Reveal key={standard.title} className="liquid-glass rounded-[28px] p-6 glass-hover">
+                <div className="font-code text-label-caps uppercase text-primary">{standard.title}</div>
+                <p className="mt-4 text-sm text-on-surface-variant">{standard.body}</p>
+              </Reveal>
+            ))}
           </div>
-          <div className="hero-actions">
-            <Link className="button primary" to="/focus/projects">View projects</Link>
-            <Link className="button" to="/">Back to homepage</Link>
+        </section>
+
+        <Reveal className="liquid-glass mt-12 rounded-[28px] p-6 sm:p-7">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-2xl">
+              <div className="font-code text-label-caps uppercase text-primary">Next Surface</div>
+              <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.03em] text-on-surface">
+                Move from role research into project evidence.
+              </h2>
+              <p className="mt-4 text-on-surface-variant">
+                The projects route uses the search and modal patterns from the Stitch package so the public evidence layer can be reviewed more interactively.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link
+                className="inline-flex items-center justify-center rounded-full border border-primary/30 bg-primary px-6 py-3 font-code text-code-sm text-on-primary shadow-[0_0_20px_rgba(173,198,255,0.32)] transition-all duration-300 hover:brightness-110"
+                to="/focus/projects"
+              >
+                View Projects
+              </Link>
+              <Link
+                className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.03] px-6 py-3 font-code text-code-sm text-on-surface glass-hover"
+                to="/"
+              >
+                Back Home
+              </Link>
+            </div>
           </div>
         </Reveal>
-      </main>
+      </SiteFrame>
     </>
   );
 }

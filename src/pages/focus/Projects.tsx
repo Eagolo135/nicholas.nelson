@@ -1,142 +1,204 @@
-import { Reveal, ScrollProgressBar, StaggerGroup, StaggerItem } from '@/components/Reveal';
-import { site } from '@/content/site';
-import { Link } from 'react-router-dom';
-
-const projectSignals = [
-  'Revision evidence',
-  'Role alignment',
-  'Verified details pending',
-] as const;
-
-const projectStandards = [
-  {
-    label: 'Why these entries exist',
-    body: 'Each project needs to support the Cloud Security Engineer - AI Trainer direction rather than act as generic portfolio filler.',
-  },
-  {
-    label: 'What still needs work',
-    body: 'Both entries still need final verified assignment detail before they can function as complete recruiter-grade proof.',
-  },
-  {
-    label: 'What the final version should show',
-    body: 'Revision quality, technical judgment, role relevance, and clearer cloud-specific evidence.',
-  },
-] as const;
+import { useDeferredValue, useState } from 'react';
+import { Reveal, ScrollProgressBar } from '@/components/Reveal';
+import { ProjectModal } from '@/components/ProjectModal';
+import { SectionHeading, SiteFrame, StatusPill } from '@/components/SiteFrame';
+import { site, type ProjectEntry } from '@/content/site';
 
 export default function Projects() {
+  const [query, setQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [activeProject, setActiveProject] = useState<ProjectEntry | null>(null);
+  const deferredQuery = useDeferredValue(query);
+  const categories = ['All', ...Array.from(new Set(site.projects.map((project) => project.category)))];
+  const normalizedQuery = deferredQuery.trim().toLowerCase();
+
+  const filteredProjects = site.projects.filter((project) => {
+    const haystack = [
+      project.name,
+      project.category,
+      project.summary,
+      project.description,
+      ...project.tags,
+      ...project.searchTerms,
+    ]
+      .join(' ')
+      .toLowerCase();
+
+    const queryMatch = !normalizedQuery || haystack.includes(normalizedQuery);
+    const categoryMatch = selectedCategory === 'All' || project.category === selectedCategory;
+
+    return queryMatch && categoryMatch;
+  });
+
   return (
     <>
       <ScrollProgressBar />
-      <main className="shell shell-home">
-        <header className="topbar">
-          <div className="brand">
-            <strong>Project focus</strong>
-            <span>Proof of direction</span>
-          </div>
-          <nav className="nav" aria-label="Focus navigation">
-            <Link to="/">Home</Link>
-            <Link to="/focus">Focus hub</Link>
-            <Link to="/focus/research">Research</Link>
-          </nav>
-        </header>
-
-        <section className="hero" aria-labelledby="projects-title">
-          <Reveal className="hero-copy">
-            <div className="eyebrow">Featured projects</div>
-            <h1 id="projects-title">Proof of direction</h1>
-            <p className="lede">Each project below is included because it should support the Cloud Security Engineer - AI Trainer direction, not just fill space on the page.</p>
-            <p className="small">This page is intentionally honest about its remaining gap: the structure is correct, but the final verified assignment details still need to replace the placeholders.</p>
-
-            <div className="hero-pills">
-              {projectSignals.map((signal) => (
-                <span className="pill" key={signal}>{signal}</span>
-              ))}
-            </div>
-          </Reveal>
-
-          <Reveal className="hero-stage" delay={0.08}>
-            <div className="hero-visual">
-              <div className="hero-ambient" aria-hidden="true">
-                <span className="ambient-orb ambient-orb-cyan" />
-                <span className="ambient-orb ambient-orb-magenta" />
-                <span className="ambient-grid" />
+      <SiteFrame>
+        <section className="mb-12">
+          <Reveal className="liquid-glass-strong overflow-hidden rounded-[32px] border border-white/10 p-6 sm:p-8 lg:p-10">
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+              <div className="max-w-3xl">
+                <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 font-code text-code-sm text-primary">
+                  <span aria-hidden="true">▣</span>
+                  Strategic Deployments
+                </div>
+                <h1 className="mt-6 font-display text-[clamp(2.8rem,6vw,5rem)] font-bold leading-[0.95] tracking-[-0.04em] text-on-surface text-glow">
+                  Searchable project evidence with a deeper modal review layer.
+                </h1>
+                <p className="mt-5 max-w-3xl text-lg text-on-surface-variant">
+                  This page adapts the Stitch search interface into a recruiter-facing project surface. Results stay honest about what is verified and what is still waiting on final assignment detail.
+                </p>
               </div>
-
-              <div className="signal-board">
-                <div className="signal-board-header">
-                  <span className="window-label">Project summary</span>
-                  <span className="signal-board-status">Evidence layer</span>
-                </div>
-
-                <div className="signal-board-grid">
-                  <article className="mini-card signal-panel signal-panel-wide">
-                    <span className="mini-card-label">Current state</span>
-                    <strong>Two project slots are defined and waiting for final verified detail.</strong>
-                    <p>The portfolio structure already reflects the target role. The next improvement is replacing placeholder copy with exact scope, revision, and outcome information.</p>
-                  </article>
-
-                  <article className="mini-card signal-panel">
-                    <span className="mini-card-label">Projects included</span>
-                    <strong>{site.projects.length} visible proof entries</strong>
-                  </article>
-
-                  <article className="mini-card signal-panel">
-                    <span className="mini-card-label">Primary gap</span>
-                    <strong>Final assignment details are still pending</strong>
-                  </article>
-                </div>
+              <div className="flex flex-wrap gap-2">
+                <StatusPill label={`${filteredProjects.length} visible results`} tone="active" />
+                <StatusPill label="Client-side search" tone="default" />
               </div>
             </div>
           </Reveal>
         </section>
 
-        <section className="section">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow">Project standards</div>
-              <h2>What these entries are supposed to prove.</h2>
-            </div>
-            <p className="muted">The value of these projects is not volume. It is whether they show revision quality, research discipline, and role alignment.</p>
-          </div>
+        <div className="grid gap-6 xl:grid-cols-[360px_minmax(0,1fr)]">
+          <aside className="space-y-6">
+            <section className="liquid-glass rounded-[28px] p-6">
+              <div className="font-code text-label-caps uppercase text-primary">Query Interface</div>
+              <div className="mt-4 flex items-center rounded-[18px] border border-primary/20 bg-surface-container-high px-4 py-3">
+                <span className="mr-3 font-code text-code-sm text-primary">search</span>
+                <input
+                  className="w-full border-none bg-transparent text-on-surface outline-none placeholder:text-on-surface-variant"
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Search technical intel..."
+                  type="text"
+                  value={query}
+                />
+                {query ? (
+                  <button
+                    className="ml-3 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-code text-code-sm text-on-surface-variant transition-all duration-300 hover:border-primary/30 hover:text-primary"
+                    onClick={() => setQuery('')}
+                    type="button"
+                  >
+                    Clear
+                  </button>
+                ) : null}
+              </div>
+            </section>
 
-          <StaggerGroup className="channel-grid">
-            {projectStandards.map((item) => (
-              <StaggerItem className="channel-card" key={item.label}>
-                <span className="channel-badge">Project review</span>
-                <h3>{item.label}</h3>
-                <p className="muted">{item.body}</p>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-        </section>
+            <section className="liquid-glass rounded-[28px] p-6">
+              <div className="font-code text-label-caps uppercase text-primary">Category Filters</div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {categories.map((category) => {
+                  const active = selectedCategory === category;
 
-        <StaggerGroup className="proof-grid" style={{ marginTop: '1rem' }}>
-          {site.projects.map((project) => (
-            <StaggerItem className="project-card" key={project.slug}>
-              <p className="eyebrow">{project.status}</p>
-              <h3>{project.name}</h3>
-              <p className="muted">{project.description}</p>
-              <ul>
-                {project.proof.map((proof) => (
-                  <li key={proof}>{proof}</li>
+                  return (
+                    <button
+                      key={category}
+                      className={[
+                        'rounded-full border px-4 py-2 font-code text-code-sm transition-all duration-300',
+                        active
+                          ? 'border-primary/40 bg-primary/10 text-primary shadow-bloom'
+                          : 'border-white/10 bg-white/[0.03] text-on-surface-variant hover:border-primary/30 hover:text-primary',
+                      ].join(' ')}
+                      onClick={() => setSelectedCategory(category)}
+                      type="button"
+                    >
+                      {category}
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+
+            <section className="liquid-glass rounded-[28px] p-6">
+              <div className="font-code text-label-caps uppercase text-primary">Technical Arsenal</div>
+              <div className="mt-4 space-y-4">
+                {site.skills.slice(0, 3).map((group) => (
+                  <article key={group.title} className="rounded-[18px] border border-white/10 bg-white/[0.03] p-4">
+                    <h2 className="font-display text-xl font-semibold tracking-[-0.03em] text-on-surface">{group.title}</h2>
+                    <p className="mt-2 text-sm text-on-surface-variant">{group.summary}</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {group.items.slice(0, 3).map((item) => (
+                        <span key={item} className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-code text-code-sm text-on-surface-variant">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </article>
                 ))}
-              </ul>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
+              </div>
+            </section>
+          </aside>
 
-        <Reveal className="cta-panel" delay={0.1} style={{ marginTop: '1rem' }}>
-          <div>
-            <div className="eyebrow">Navigation</div>
-            <h2>Return to the broader role case.</h2>
-            <p className="muted">The research page explains why this role direction makes sense. The homepage shows how that argument is compressed for a faster review.</p>
-          </div>
-          <div className="hero-actions">
-            <Link className="button primary" to="/focus/research">Read research</Link>
-            <Link className="button" to="/">Back to homepage</Link>
-          </div>
-        </Reveal>
-      </main>
+          <section>
+            <SectionHeading
+              description={
+                normalizedQuery
+                  ? `Showing results for "${deferredQuery}". The filter runs against project names, categories, tags, summaries, and explicit search terms.`
+                  : 'The right column is the main interaction surface: click a card to open the modal-based project deep dive.'
+              }
+              eyebrow="Query Results"
+              title={`${filteredProjects.length} match${filteredProjects.length === 1 ? '' : 'es'} found`}
+            />
+
+            {filteredProjects.length ? (
+              <div className="grid gap-5 lg:grid-cols-2">
+                {filteredProjects.map((project) => (
+                  <Reveal key={project.slug} className="h-full">
+                    <button
+                      className="liquid-glass group flex h-full w-full flex-col overflow-hidden rounded-[28px] text-left transition-all duration-300 hover:border-primary/30"
+                      onClick={() => setActiveProject(project)}
+                      type="button"
+                    >
+                      <div className="relative h-48 overflow-hidden border-b border-white/10 bg-gradient-to-br from-primary/15 via-surface-container-high to-surface-container-lowest p-6">
+                        <div className="absolute inset-0 bg-cyber-grid bg-[size:48px_48px] opacity-[0.08] transition-transform duration-500 group-hover:scale-110" />
+                        <div className="relative flex h-full flex-col justify-between">
+                          <div className="flex items-center justify-between gap-3">
+                            <StatusPill label={project.status} tone={project.statusTone} />
+                            <span className="font-code text-code-sm text-primary">Open modal</span>
+                          </div>
+                          <div>
+                            <div className="font-code text-label-caps uppercase text-primary">{project.category}</div>
+                            <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.03em] text-on-surface">
+                              {project.name}
+                            </h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-1 flex-col p-6">
+                        <p className="text-sm text-on-surface-variant">{project.summary}</p>
+                        <div className="mt-5 flex flex-wrap gap-2">
+                          {project.tags.map((tag) => (
+                            <span key={tag} className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-code text-code-sm text-on-surface-variant">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="mt-6 space-y-2">
+                          {project.proof.slice(0, 2).map((proof) => (
+                            <div key={proof} className="rounded-[16px] border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-on-surface-variant">
+                              {proof}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </button>
+                  </Reveal>
+                ))}
+              </div>
+            ) : (
+              <Reveal className="liquid-glass rounded-[28px] p-8 text-center">
+                <div className="font-code text-label-caps uppercase text-primary">No matches</div>
+                <h2 className="mt-4 font-display text-3xl font-semibold tracking-[-0.03em] text-on-surface">
+                  No projects matched the current query.
+                </h2>
+                <p className="mx-auto mt-4 max-w-2xl text-on-surface-variant">
+                  Try another keyword or clear the filters. The search is intentionally narrow because the portfolio is still prioritizing only verified, role-relevant project slots.
+                </p>
+              </Reveal>
+            )}
+          </section>
+        </div>
+
+        <ProjectModal onClose={() => setActiveProject(null)} project={activeProject} />
+      </SiteFrame>
     </>
   );
 }

@@ -1,10 +1,11 @@
 # Nicholas Nelson Portfolio
 
-Professional portfolio for Nicholas Nelson, built with Vite, React, and TypeScript for GitHub Pages hosting.
+Professional portfolio for Nicholas Nelson, built with Vite, React, TypeScript, and TailwindCSS for GitHub Pages hosting.
 
 ## Current status
-- Novu-inspired interactive homepage scaffolded
-- Focus pages scaffolded
+- Stitch-inspired Liquid Glass redesign implemented across the public site
+- Shared app chrome, recruiter-facing homepage, focus hub, research page, and searchable projects page implemented
+- Projects page includes a modal-based deep dive surface with explicit pending states for unfinished evidence
 - Single source of truth doc added in docs/PROJECT_SPEC.md
 - Project content still needs the final midterm and job-technology details
 - GitHub Pages deployment workflow added
@@ -14,10 +15,11 @@ All major scope and content decisions should be checked against docs/PROJECT_SPE
 
 ## Local development
 1. Install dependencies
-2. Run the dev server
+2. Run `npm run dev`
 
 ## Build
 - `npm run build`
+- `npm run typecheck`
 
 ## GitHub Pages
 - Routing uses `HashRouter`, so focus-page URLs work on GitHub Pages without server-side rewrites.
@@ -26,7 +28,7 @@ All major scope and content decisions should be checked against docs/PROJECT_SPE
 - Local validation for production output:
 	1. Run `npm run build`
 	2. Run `npm run preview`
-	3. Open the local preview and verify `#/focus`, `#/focus/research`, `#/focus/projects`, and `#/focus/workflow`
+	3. Open the local preview and verify `#/`, `#/focus`, `#/focus/research`, and `#/focus/projects`
 
 ## Live site
 https://eagolo135.github.io/nicholas.nelson/
