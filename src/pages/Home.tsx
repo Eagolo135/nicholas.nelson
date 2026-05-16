@@ -30,6 +30,14 @@ function scrollToSection(id: string) {
   };
 }
 
+function getProjectActionHref(project: (typeof site.projects)[number]) {
+  return project.links?.docsHref || project.links?.sourceHref || '/focus/projects';
+}
+
+function isExternalHref(href: string) {
+  return href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:');
+}
+
 export default function HomePage() {
   const contactHref = site.links.email ? `mailto:${site.links.email}` : site.links.github;
 
@@ -248,6 +256,8 @@ export default function HomePage() {
               <StaggerGroup className="grid grid-cols-1 gap-5 md:grid-cols-2">
                 {site.projects.map((project, index) => {
                   const iconData = projectIcons[index % projectIcons.length];
+                  const actionHref = getProjectActionHref(project);
+                  const externalAction = isExternalHref(actionHref);
 
                   return (
                   <StaggerItem className="liquid-glass glass-hover flex flex-col gap-5 rounded-xl p-8" key={project.slug}>
@@ -269,10 +279,22 @@ export default function HomePage() {
                         ))}
                       </div>
                     </div>
-                    <div className="mt-auto flex items-center gap-2 pt-4 font-body text-body-md font-bold text-primary">
-                      Open in project view
-                      <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
-                    </div>
+                    {externalAction ? (
+                      <a
+                        className="mt-auto flex items-center gap-2 pt-4 font-body text-body-md font-bold text-primary"
+                        href={actionHref}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        Open in project view
+                        <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
+                      </a>
+                    ) : (
+                      <Link className="mt-auto flex items-center gap-2 pt-4 font-body text-body-md font-bold text-primary" to={actionHref}>
+                        Open in project view
+                        <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
+                      </Link>
+                    )}
                   </StaggerItem>
                 )})}
               </StaggerGroup>
